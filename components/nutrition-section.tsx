@@ -15,7 +15,7 @@ export default function NutritionSection() {
               viewport={{ once: true }}
               className="relative h-[400px] overflow-hidden rounded-lg md:h-auto"
             >
-              <img src="/images/gourmet-nutrition.jpg" alt="Gourmet nutrition" className="h-full w-full object-cover" />
+              <img src="/images/nutrition.jpeg" alt="Gourmet nutrition" className="h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
             </motion.div>
 

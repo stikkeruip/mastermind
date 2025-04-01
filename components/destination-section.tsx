@@ -2,27 +2,27 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { MapPin } from "lucide-react"
+import { MapPin, ChevronLeft, ChevronRight } from "lucide-react"
 
 const destinations = [
   {
     name: "United Kingdom",
-    image: "/images/uk.jpg",
+    image: "/images/uk.webp",
     description: "Historic estates and countryside retreats for discreet recovery",
   },
   {
     name: "Germany",
-    image: "/images/germany.jpg",
+    image: "/images/germany.webp",
     description: "Alpine wellness centers with cutting-edge medical facilities",
   },
   {
     name: "Greece",
-    image: "/images/greece.jpg",
+    image: "/images/greece.webp",
     description: "Aegean beauty with world-class wellness facilities",
   },
   {
     name: "France",
-    image: "/images/france.jpg",
+    image: "/images/france.webp",
     description: "Elegant châteaux and Mediterranean villas for refined healing",
   },
   {
@@ -32,13 +32,21 @@ const destinations = [
   },
   {
     name: "Private Island",
-    image: "/images/private-island.jpg",
+    image: "/images/private-island.webp",
     description: "Complete seclusion and privacy on exclusive island retreats",
   },
 ]
 
 export default function DestinationSection() {
   const [activeDestination, setActiveDestination] = useState(0)
+
+  const goToPrevious = () => {
+    setActiveDestination((prev) => (prev === 0 ? destinations.length - 1 : prev - 1))
+  }
+
+  const goToNext = () => {
+    setActiveDestination((prev) => (prev === destinations.length - 1 ? 0 : prev + 1))
+  }
 
   return (
     <section className="bg-white py-24 md:py-32">
@@ -80,6 +88,23 @@ export default function DestinationSection() {
                 </div>
               </div>
             ))}
+            
+            {/* Navigation Arrows */}
+            <button 
+              onClick={goToPrevious} 
+              className="absolute left-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition-all hover:bg-white/30 focus:outline-none"
+              aria-label="Previous destination"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
+            
+            <button 
+              onClick={goToNext} 
+              className="absolute right-4 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-sm transition-all hover:bg-white/30 focus:outline-none"
+              aria-label="Next destination"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
           </div>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
@@ -103,4 +128,3 @@ export default function DestinationSection() {
     </section>
   )
 }
-

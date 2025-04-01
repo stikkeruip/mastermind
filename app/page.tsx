@@ -8,7 +8,6 @@ import SignaturePrograms from "@/components/signature-programs"
 import NutritionSection from "@/components/nutrition-section"
 import NeurofeedbackSection from "@/components/neurofeedback-section"
 import DestinationSection from "@/components/destination-section"
-import LuxuryVillas from "@/components/luxury-villas"
 import TreatmentSection from "@/components/treatment-section"
 import TestimonialsSection from "@/components/testimonials-section"
 import ContactSection from "@/components/contact-section"
@@ -23,12 +22,10 @@ export default function Home() {
       <DifferenceSection />
       <PersonalSection />
       <WhyChooseUs />
-      {/* Removed OurTeam section */}
       <SignaturePrograms />
       <NutritionSection />
       <NeurofeedbackSection />
       <DestinationSection />
-      <LuxuryVillas />
       <TreatmentSection />
       <TestimonialsSection />
       <ContactSection />
@@ -36,4 +33,3 @@ export default function Home() {
     </main>
   )
 }
-

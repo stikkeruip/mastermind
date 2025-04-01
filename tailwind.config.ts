@@ -57,8 +57,9 @@ const config = {
         "ocean-blue": "#00344A",
         "soft-ivory": "#FDF8F3",
         gold: "#C6A56B",
-        "sage-green": "#7a8c7e",
-        "warm-beige": "#d5c5b2",
+        "muted-gold": "#C6A56B",
+        "sage-green": "#C2D2C3",
+        "warm-beige": "#DCCBB1",
       },
       borderRadius: {
         lg: "var(--radius)",

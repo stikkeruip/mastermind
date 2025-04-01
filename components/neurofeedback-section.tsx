@@ -71,7 +71,7 @@ export default function NeurofeedbackSection() {
               className="relative h-[400px] overflow-hidden rounded-lg md:h-auto"
             >
               <img
-                src="/images/erik-portrait.jpg"
+                src="/images/neurotherapie-bespreking.webp"
                 alt="Neurofeedback therapy session with Drs. Erik van Beuningen"
                 className="h-full w-full object-cover"
               />
@@ -88,7 +88,7 @@ export default function NeurofeedbackSection() {
                   <div className="flex items-center gap-4">
                     <div className="h-16 w-16 overflow-hidden rounded-full">
                       <img
-                        src="/images/erik-portrait-headshot.jpg"
+                        src="/images/erik-portrait.webp"
                         alt="Drs. Erik van Beuningen"
                         className="h-full w-full object-cover"
                       />

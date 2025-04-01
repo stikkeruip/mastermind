@@ -2,52 +2,64 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Pill, Brain, Heart } from "lucide-react"
 
-const treatments = [
+// Define treatment categories and items
+const treatmentCategories = [
   {
-    id: "substance",
-    name: "Substance Addictions",
-    description: "Comprehensive treatment for alcohol, prescription medications, and other substance dependencies.",
-    image: "/images/treatment-substance.jpg",
+    id: "addictions",
+    name: "Addictions",
+    icon: Pill,
+    color: "bg-muted-gold/10 text-muted-gold",
+    items: [
+      "Dual Diagnosis",
+      "Alcoholism",
+      "Drug addictions (illicit and prescribed drugs)",
+      "Compulsive eating",
+      "Gambling",
+      "Sex compulsivity",
+      "Internet porn compulsivity",
+      "Gaming addiction",
+      "Love compulsivity"
+    ]
   },
   {
-    id: "depression",
-    name: "Depression & Anxiety",
-    description: "Innovative approaches to mood disorders that address root causes and provide lasting relief.",
-    image: "/images/treatment-depression.jpg",
+    id: "mental-health",
+    name: "Mental Health",
+    icon: Brain,
+    color: "bg-sage-green/10 text-sage-green",
+    items: [
+      "Depression (including postnatal)",
+      "Bipolar",
+      "ADHD",
+      "Anxiety and Stress",
+      "Burnout",
+      "Co-dependency",
+      "Chronic pain",
+      "Trauma / PTSD",
+      "Self-harm",
+      "Eating disorders",
+      "Body dysmorphia",
+      "Work-Life challenges"
+    ]
   },
   {
-    id: "burnout",
-    name: "Burnout & Executive Stress",
-    description: "Specialized programs for high-performing individuals facing career-related stress and exhaustion.",
-    image: "/images/treatment-burnout.jpg",
-  },
-  {
-    id: "trauma",
-    name: "PTSD & Trauma",
-    description: "Evidence-based therapies that help process and integrate traumatic experiences.",
-    image: "/images/treatment-trauma.jpg",
-  },
-  {
-    id: "codependency",
-    name: "Co-dependency",
-    description: "Support for establishing healthy boundaries and relationship patterns.",
-    image: "/images/treatment-codependency.jpg",
-  },
-  {
-    id: "eating",
-    name: "Eating Disorders",
-    description: "Holistic treatment addressing the psychological and physiological aspects of disordered eating.",
-    image: "/images/treatment-eating.jpg",
-  },
+    id: "general",
+    name: "General",
+    icon: Heart,
+    color: "bg-warm-beige/10 text-ocean-blue",
+    items: [
+      "Relationship/Marital issues",
+      "Family issues",
+      "Sex and Sexuality issues",
+      "Personal growth"
+    ]
+  }
 ]
 
 export default function TreatmentSection() {
-  const [activeTab, setActiveTab] = useState("substance")
-
   return (
-    <section className="bg-white py-24 md:py-32">
+    <section className="bg-ocean-blue/5 py-24 md:py-32">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -60,55 +72,79 @@ export default function TreatmentSection() {
             What We Treat
           </h2>
           <p className="mx-auto max-w-2xl text-lg font-light text-muted-foreground">
-            Comprehensive care for a range of challenges
+            A holistic approach to healing, tailored to your unique journey
           </p>
         </motion.div>
 
-        <div className="mx-auto max-w-6xl">
-          <Tabs defaultValue="substance" value={activeTab} onValueChange={setActiveTab}>
-            <TabsList className="mx-auto mb-8 grid max-w-3xl grid-cols-2 gap-2 bg-transparent md:grid-cols-3 lg:grid-cols-6">
-              {treatments.map((treatment) => (
-                <TabsTrigger
-                  key={treatment.id}
-                  value={treatment.id}
-                  className="rounded-full border border-muted bg-white px-4 py-2 text-sm font-light data-[state=active]:border-ocean-blue data-[state=active]:bg-ocean-blue data-[state=active]:text-white"
-                >
-                  {treatment.name}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-
-            {treatments.map((treatment) => (
-              <TabsContent key={treatment.id} value={treatment.id} className="mt-0">
-                <div className="overflow-hidden rounded-lg">
-                  <div className="grid md:grid-cols-2">
-                    <div className="relative aspect-video md:aspect-auto">
-                      <img
-                        src={treatment.image || "/placeholder.svg"}
-                        alt={treatment.name}
-                        className="h-full w-full object-cover"
-                      />
-                    </div>
-                    <div className="flex flex-col justify-center bg-white p-8 md:p-12">
-                      <h3 className="mb-4 font-serif text-2xl font-light text-ocean-blue">{treatment.name}</h3>
-                      <p className="mb-6 font-light leading-relaxed text-muted-foreground">{treatment.description}</p>
-                      <p className="font-light leading-relaxed text-muted-foreground">
-                        Our approach combines evidence-based clinical therapies with innovative treatments tailored to
-                        your specific needs. We address both the symptoms and underlying causes, creating a
-                        comprehensive healing experience that supports lasting recovery.
-                      </p>
-                      <button className="mt-8 self-start border-b border-ocean-blue pb-1 text-sm font-light text-ocean-blue transition-colors hover:border-gold hover:text-gold">
-                        Learn More
-                      </button>
+        <div className="mx-auto max-w-5xl">
+          <div className="grid gap-8 md:grid-cols-3">
+            {treatmentCategories.map((category, index) => (
+              <motion.div 
+                key={category.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 * index }}
+                viewport={{ once: true }}
+                className="flex flex-col"
+              >
+                <div className="rounded-lg border border-muted bg-white/80 shadow-sm backdrop-blur-sm">
+                  <div className="relative overflow-hidden rounded-t-lg p-6">
+                    <div className={`absolute -right-16 -top-16 h-32 w-32 rounded-full ${category.color.split(" ")[0]}`}></div>
+                    
+                    <div className="relative z-10 flex items-start">
+                      <div>
+                        <div className={`mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300 ${category.color}`}>
+                          <category.icon className="h-6 w-6" />
+                        </div>
+                        <h3 className="mb-2 font-serif text-2xl font-light tracking-wide text-ocean-blue">
+                          {category.name}
+                        </h3>
+                      </div>
                     </div>
                   </div>
+                  
+                  <div className="rounded-b-lg border-t border-muted/50 bg-white/50 p-6">
+                    <ul className="grid gap-3">
+                      {category.items.map((item, i) => (
+                        <motion.li
+                          key={i}
+                          initial={{ opacity: 0, x: -5 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ duration: 0.3, delay: 0.05 * i }}
+                          className="font-light text-muted-foreground"
+                        >
+                          <div className="flex items-center gap-2">
+                            <div className={`h-1.5 w-1.5 rounded-full ${category.color.split(" ")[1]}`}></div>
+                            <span>{item}</span>
+                          </div>
+                        </motion.li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </TabsContent>
+              </motion.div>
             ))}
-          </Tabs>
+          </div>
+          
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+            viewport={{ once: true }}
+            className="mt-16 text-center"
+          >
+            <p className="mx-auto max-w-2xl font-light italic text-muted-foreground">
+              "Our approach is deeply personalized. We recognize that each individual's journey is unique, and we tailor our treatments accordingly, combining time-tested methodologies with innovative techniques."
+            </p>
+            <div className="mt-8 flex items-center justify-center">
+              <button className="group relative overflow-hidden rounded-full border border-ocean-blue px-6 py-3 text-sm font-light text-ocean-blue transition-all duration-300 hover:border-transparent hover:text-white">
+                <span className="relative z-10">Schedule a confidential consultation</span>
+                <span className="absolute bottom-0 left-0 h-0 w-full bg-ocean-blue transition-all duration-300 group-hover:h-full"></span>
+              </button>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
   )
 }
-
