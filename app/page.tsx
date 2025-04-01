@@ -4,7 +4,6 @@ import WelcomeSection from "@/components/welcome-section"
 import DifferenceSection from "@/components/difference-section"
 import PersonalSection from "@/components/personal-section"
 import WhyChooseUs from "@/components/why-choose-us"
-import OurTeam from "@/components/our-team"
 import SignaturePrograms from "@/components/signature-programs"
 import NutritionSection from "@/components/nutrition-section"
 import NeurofeedbackSection from "@/components/neurofeedback-section"
@@ -24,7 +23,7 @@ export default function Home() {
       <DifferenceSection />
       <PersonalSection />
       <WhyChooseUs />
-      <OurTeam />
+      {/* Removed OurTeam section */}
       <SignaturePrograms />
       <NutritionSection />
       <NeurofeedbackSection />

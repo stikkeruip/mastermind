@@ -55,12 +55,12 @@ const cardVariants = {
 }
 
 export default function SignaturePrograms() {
-  const [activeCard, setActiveCard] = useState(0)
+  const [activeCard, setActiveCard] = useState<number | null>(null)
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, amount: 0.1 })
 
   return (
-    <section ref={ref} id="programs" className="bg-white py-24 md:py-32">
+    <section ref={ref} id="programs" className="bg-ocean-blue/5 py-24 md:py-32">
       <div className="container mx-auto px-4">
         <motion.div
           variants={headerVariants}
@@ -84,26 +84,37 @@ export default function SignaturePrograms() {
               variants={cardVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              className="relative flex-1 overflow-hidden rounded-lg border border-muted p-8"
+              className="group relative flex-1 overflow-hidden rounded-lg border border-muted bg-white p-8 transition-all duration-300 hover:border-gold/30 hover:shadow-[0_0_25px_rgba(198,165,107,0.15)]"
               onMouseEnter={() => setActiveCard(index)}
+              onMouseLeave={() => setActiveCard(null)}
             >
-              <h3 className="mb-2 font-serif text-2xl font-light text-ocean-blue">{program.name}</h3>
-              <p className="mb-6 text-sm font-light text-muted-foreground">{program.description}</p>
+              {/* Subtle gradient overlay that appears on hover */}
+              <div className="absolute inset-0 bg-gradient-to-b from-white via-white to-ocean-blue/5 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
 
-              <ul className="mt-auto space-y-3">
-                {program.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2 text-sm">
-                    <Check className="mt-0.5 h-4 w-4 text-ocean-blue" />
-                    <span className="font-light text-muted-foreground">{feature}</span>
-                  </li>
-                ))}
-              </ul>
+              {/* Gold accent line */}
+              <div className="absolute left-0 top-0 h-1 w-0 bg-gold transition-all duration-500 ease-out group-hover:w-full"></div>
 
-              <button className="mt-8 self-start border-b border-ocean-blue pb-1 text-sm font-light text-ocean-blue transition-colors hover:border-gold hover:text-gold">
-                Learn More
-              </button>
+              <div className="relative z-10">
+                <h3 className="mb-2 font-serif text-2xl font-light text-ocean-blue transition-colors duration-300 group-hover:text-ocean-blue/90">
+                  {program.name}
+                </h3>
+                <p className="mb-6 text-sm font-light text-muted-foreground">{program.description}</p>
 
-              {activeCard === index && <div className="absolute inset-0 -z-10 bg-ocean-blue/5"></div>}
+                <ul className="mt-auto space-y-3">
+                  {program.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-2 text-sm">
+                      <Check className="mt-0.5 h-4 w-4 text-ocean-blue transition-colors duration-300 group-hover:text-gold" />
+                      <span className="font-light text-muted-foreground">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-8 overflow-hidden">
+                  <span className="relative inline-block border-b border-ocean-blue pb-1 text-sm font-light text-ocean-blue transition-all duration-300 before:absolute before:bottom-[-1px] before:left-0 before:h-[1px] before:w-0 before:bg-gold before:transition-all before:duration-300 group-hover:border-transparent group-hover:text-gold group-hover:before:w-full">
+                    Learn More
+                  </span>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

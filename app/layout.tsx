@@ -13,7 +13,6 @@ export const metadata: Metadata = {
   title: "MASTERMIND2.0 | Luxury Mental Health & Addiction Retreats",
   description:
     "Exclusive mental health and addiction treatment in luxury settings worldwide. Personalized care for discerning clients.",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -22,8 +21,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`${playfair.variable} font-sans`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${playfair.variable} font-sans`} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false} disableTransitionOnChange>
           {children}
         </ThemeProvider>
@@ -32,6 +31,3 @@ export default function RootLayout({
   )
 }
 
-
-
-import './globals.css'

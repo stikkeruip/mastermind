@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 
 export default function NutritionSection() {
   return (
-    <section className="relative overflow-hidden bg-sage-green/10 py-24 md:py-32">
+    <section className="relative overflow-hidden bg-white py-24 md:py-32">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-12 md:grid-cols-2 md:gap-8 lg:gap-16">

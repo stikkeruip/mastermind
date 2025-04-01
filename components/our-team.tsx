@@ -17,10 +17,10 @@ const team = [
     bio: "James creates personalized nutrition plans based on genetic testing and biochemical analysis. His protocols support brain health and recovery through targeted nutritional interventions.",
   },
   {
-    name: "Dr. Erik Larson",
+    name: "Drs. Erik van Beuningen",
     role: "Neurotherapist",
-    image: "/images/team-neurotherapist.jpg",
-    bio: "Dr. Larson is a pioneer in neurofeedback therapy, helping clients retrain brain patterns associated with addiction and mental health challenges. His work has been featured in leading medical journals.",
+    image: "/images/erik-portrait.jpg",
+    bio: "Drs. van Beuningen is a pioneer in neurofeedback therapy, helping clients retrain brain patterns associated with addiction and mental health challenges. His work has been featured in leading medical journals.",
   },
   {
     name: "Olivia Chen",

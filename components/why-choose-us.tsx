@@ -85,7 +85,7 @@ export default function WhyChooseUs() {
               variants={cardVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              className="rounded-lg border border-muted bg-background p-8 transition-colors hover:border-ocean-blue/20 hover:shadow-lg"
+              className="rounded-lg border-2 border-ocean-blue/10 bg-background p-8 shadow-sm transition-all duration-300 hover:border-ocean-blue/30 hover:shadow-md"
             >
               <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-ocean-blue/10 text-ocean-blue">
                 <feature.icon className="h-6 w-6" />
@@ -104,7 +104,7 @@ export default function WhyChooseUs() {
                 variants={cardVariants}
                 initial="hidden"
                 animate={isInView ? "visible" : "hidden"}
-                className="flex-1 rounded-lg border border-muted bg-background p-8 transition-colors hover:border-ocean-blue/20 hover:shadow-lg"
+                className="flex-1 rounded-lg border-2 border-ocean-blue/10 bg-background p-8 shadow-sm transition-all duration-300 hover:border-ocean-blue/30 hover:shadow-md"
               >
                 <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-full bg-ocean-blue/10 text-ocean-blue">
                   <feature.icon className="h-6 w-6" />

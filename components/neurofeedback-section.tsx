@@ -23,7 +23,7 @@ const benefits = [
 
 export default function NeurofeedbackSection() {
   return (
-    <section className="bg-white py-24 md:py-32">
+    <section className="bg-ocean-blue/5 py-24 md:py-32">
       <div className="container mx-auto px-4">
         <div className="mx-auto max-w-6xl">
           <div className="grid gap-12 md:grid-cols-2 md:gap-8 lg:gap-16">
@@ -71,8 +71,8 @@ export default function NeurofeedbackSection() {
               className="relative h-[400px] overflow-hidden rounded-lg md:h-auto"
             >
               <img
-                src="/images/neurofeedback.jpg"
-                alt="Neurofeedback therapy session"
+                src="/images/erik-portrait.jpg"
+                alt="Neurofeedback therapy session with Drs. Erik van Beuningen"
                 className="h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
@@ -88,13 +88,13 @@ export default function NeurofeedbackSection() {
                   <div className="flex items-center gap-4">
                     <div className="h-16 w-16 overflow-hidden rounded-full">
                       <img
-                        src="/images/erik-portrait.jpg"
-                        alt="Dr. Erik Larson"
+                        src="/images/erik-portrait-headshot.jpg"
+                        alt="Drs. Erik van Beuningen"
                         className="h-full w-full object-cover"
                       />
                     </div>
                     <div className="text-white">
-                      <h4 className="font-serif text-lg">Dr. Erik Larson</h4>
+                      <h4 className="font-serif text-lg">Drs. Erik van Beuningen</h4>
                       <p className="text-sm font-light">Lead Neurotherapist</p>
                     </div>
                   </div>

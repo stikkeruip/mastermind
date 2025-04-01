@@ -33,14 +33,21 @@ export default function PersonalSection() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
-              className="relative h-[400px] overflow-hidden rounded-lg md:h-auto"
+              className="relative h-auto overflow-hidden rounded-lg"
             >
-              <img
-                src="/images/personal-session.jpg"
-                alt="Personal therapy session"
-                className="h-full w-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+              {/* Wistia iframe with color matching section background */}
+              <div className="relative aspect-video w-full overflow-hidden rounded-lg">
+                <iframe
+                  src="https://fast.wistia.net/embed/iframe/q5fhqkc98w?videoFoam=true&playerColor=00344A&volume=0.25"
+                  title="Mastermind Video"
+                  allow="autoplay; fullscreen"
+                  allowtransparency="true"
+                  frameBorder="0"
+                  scrolling="no"
+                  className="absolute h-full w-full left-0 top-0"
+                  style={{ border: "none" }}
+                ></iframe>
+              </div>
             </motion.div>
           </div>
         </div>

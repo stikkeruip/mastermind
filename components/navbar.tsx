@@ -10,25 +10,49 @@ import { cn } from "@/lib/utils"
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const [visible, setVisible] = useState(true)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [lastScrollY, setLastScrollY] = useState(0)
 
   // Handle scroll effect
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 20
+      const currentScrollY = window.scrollY
+
+      // Determine if scrolled past threshold
+      const isScrolled = currentScrollY > 20
       if (isScrolled !== scrolled) {
         setScrolled(isScrolled)
       }
+
+      // Show/hide based on scroll direction
+      if (currentScrollY > 100) {
+        // Only apply hide/show after scrolling past hero section
+        if (currentScrollY > lastScrollY) {
+          // Scrolling down
+          setVisible(false)
+        } else {
+          // Scrolling up
+          setVisible(true)
+        }
+      } else {
+        // Always visible at the top
+        setVisible(true)
+      }
+
+      setLastScrollY(currentScrollY)
     }
 
-    window.addEventListener("scroll", handleScroll)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
-  }, [scrolled])
+  }, [scrolled, lastScrollY])
 
   // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (mobileMenuOpen) {
       document.body.style.overflow = "hidden"
+      // Always show navbar when menu is open
+      setVisible(true)
     } else {
       document.body.style.overflow = ""
     }
@@ -50,17 +74,13 @@ export default function Navbar() {
     <header
       className={cn(
         "fixed left-0 top-0 z-50 w-full transition-all duration-300",
-        scrolled ? "bg-soft-ivory py-3 shadow-sm" : "bg-transparent py-6",
+        scrolled ? "bg-black/60 py-3 shadow-md" : "bg-black/40 py-6",
+        visible ? "translate-y-0" : "-translate-y-full",
       )}
     >
-      <div className={cn("absolute inset-0 transition-opacity duration-300", scrolled ? "opacity-100" : "opacity-40")}>
+      <div className={cn("absolute inset-0 transition-opacity duration-300", scrolled ? "opacity-100" : "opacity-90")}>
         {/* Frosted glass effect background */}
-        <div
-          className={cn(
-            "h-full w-full",
-            scrolled ? "backdrop-blur-md bg-soft-ivory/80" : "bg-black/30 backdrop-blur-sm",
-          )}
-        ></div>
+        <div className={cn("h-full w-full backdrop-blur-md", scrolled ? "bg-black/60" : "bg-black/50")}></div>
       </div>
 
       <div className="container relative mx-auto flex items-center justify-between px-4">
@@ -98,7 +118,7 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="z-10 rounded-full p-2 text-ocean-blue transition-colors hover:bg-ocean-blue/5 md:hidden"
+          className="z-10 rounded-full p-2 text-white transition-colors hover:bg-white/10 md:hidden"
           aria-label="Toggle menu"
         >
           {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -179,9 +199,7 @@ function NavLink({
       href={href}
       className="group relative px-3 py-2 text-sm font-light tracking-wide transition-colors md:px-4 lg:text-base"
     >
-      <span className={cn("relative z-10 transition-colors duration-300", scrolled ? "text-ocean-blue" : "text-white")}>
-        {children}
-      </span>
+      <span className="relative z-10 text-white drop-shadow-[0_1px_1px_rgba(0,0,0,0.5)]">{children}</span>
       <span className="absolute bottom-0 left-0 h-[1px] w-0 bg-gold transition-all duration-300 group-hover:w-full"></span>
     </Link>
   )
@@ -206,12 +224,8 @@ function CtaButton({
       whileTap={{ scale: 0.98 }}
       onClick={onClick}
       className={cn(
-        "group relative overflow-hidden rounded-full border px-5 py-2 text-sm font-light tracking-wide transition-all duration-300 md:px-6 md:py-2.5 lg:text-base",
-        isMobile
-          ? "border-gold bg-transparent text-white hover:bg-gold/10"
-          : scrolled
-            ? "border-ocean-blue bg-transparent text-ocean-blue hover:border-gold hover:text-gold"
-            : "border-white bg-transparent text-white hover:border-gold hover:text-gold",
+        "group relative overflow-hidden rounded-full border border-white px-5 py-2 text-sm font-light tracking-wide text-white transition-all duration-300 hover:border-gold hover:text-gold drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)] md:px-6 md:py-2.5 lg:text-base",
+        isMobile && "border-gold",
       )}
     >
       START YOUR JOURNEY

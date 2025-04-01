@@ -6,29 +6,34 @@ import { MapPin } from "lucide-react"
 
 const destinations = [
   {
-    name: "Private Islands",
+    name: "United Kingdom",
+    image: "/images/uk.jpg",
+    description: "Historic estates and countryside retreats for discreet recovery",
+  },
+  {
+    name: "Germany",
+    image: "/images/germany.jpg",
+    description: "Alpine wellness centers with cutting-edge medical facilities",
+  },
+  {
+    name: "Greece",
+    image: "/images/greece.jpg",
+    description: "Aegean beauty with world-class wellness facilities",
+  },
+  {
+    name: "France",
+    image: "/images/france.jpg",
+    description: "Elegant châteaux and Mediterranean villas for refined healing",
+  },
+  {
+    name: "Thailand",
+    image: "/images/thailand.jpg",
+    description: "Tropical sanctuaries combining Eastern and Western approaches",
+  },
+  {
+    name: "Private Island",
     image: "/images/private-island.jpg",
     description: "Complete seclusion and privacy on exclusive island retreats",
-  },
-  {
-    name: "Luxury Resorts",
-    image: "/images/luxury-resort.jpg",
-    description: "World-class amenities and service at renowned destinations",
-  },
-  {
-    name: "Mountain Retreats",
-    image: "/images/mountain-retreat.jpg",
-    description: "Serene alpine settings for reflection and rejuvenation",
-  },
-  {
-    name: "Coastal Villas",
-    image: "/images/coastal-villa.jpg",
-    description: "Breathtaking ocean views and private beach access",
-  },
-  {
-    name: "Your Home",
-    image: "/images/private-home.jpg",
-    description: "Personalized treatment in the comfort of your own residence",
   },
 ]
 
@@ -36,7 +41,7 @@ export default function DestinationSection() {
   const [activeDestination, setActiveDestination] = useState(0)
 
   return (
-    <section className="bg-ocean-blue/5 py-24 md:py-32">
+    <section className="bg-white py-24 md:py-32">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
